@@ -21,6 +21,7 @@ set (GLBARCODE_SOURCES
   BarcodeOnecode.cpp
   BarcodeDataMatrix.cpp
   BarcodeQrcode.cpp
+  BarcodeI2of5.cpp
   DrawingPrimitives.cpp
   Renderer.cpp
   QtRenderer.cpp
