@@ -110,14 +110,12 @@ namespace glbarcode
 
 		/* Left frame symbol */
 		code += frameSymbol;
-		//code += "i";
 
 		//int sum = 0;
 		for (auto i = 0u; i < cookedData.length(); i += 2)
 		{
 			char c1 = cookedData[i];
 			char c2 = cookedData[i + 1];
-			//size_t cValue = alphabet.find( toupper( c1 ) );
 
 			auto sym1 = symbols[alphabet.find( toupper( c1 ) )];
 			auto sym2 = symbols[alphabet.find( toupper( c2 ) )];
@@ -133,9 +131,6 @@ namespace glbarcode
 					code += tolower( sym2[j / 2] );
 				}
 			}
-
-			//code += symbols[cValue];
-
 
 			//sum += int(cValue);
 		}
