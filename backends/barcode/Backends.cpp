@@ -56,7 +56,7 @@ namespace glabels
 			               true, true, true, false, "123456789012", false, 12 );
 
 			registerStyle( "i2of5", "", tr("Interleaved 2of5"),
-				       false, true, true, true, "12345678", false, 10);
+				       true, true, true, true, "12345678", false, 10);
 
 			registerStyle( "postnet", "", tr("POSTNET (any)"),
 			               false, false, true, false, "12345-6789-12", false, 11 );

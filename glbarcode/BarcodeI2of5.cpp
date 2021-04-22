@@ -55,7 +55,7 @@ namespace
 	/* Vectorization constants */
 	const double MIN_X       = ( 0.0075 *  PTS_PER_INCH );
 	const double N           = 2.5;
-	const double MIN_I       = MIN_X;
+	//const double MIN_I       = MIN_X;
 	const double MIN_HEIGHT  = ( 0.19685 *  PTS_PER_INCH );
 	const double MIN_QUIET   = ( 10 * MIN_X );
 
@@ -175,15 +175,17 @@ namespace glbarcode
 	{
 
 		/* determine width and establish horizontal scale, based on original cooked data */
-		auto dataSize = double( cookedData.size() );
+		auto dataSize = double( cookedData.size() ) / 2.0;
 		double minL;
 		if ( !checksum() )
 		{
-			minL = (dataSize + 2)*(3*N + 6)*MIN_X + (dataSize + 1)*MIN_I;
+			//minL = (dataSize + 2)*(3*N + 6)*MIN_X;
+			minL = 2.0 * dataSize * ( 2 * N + 3) * MIN_X;
 		}
 		else
 		{
-			minL = (dataSize + 3)*(3*N + 6)*MIN_X + (dataSize + 2)*MIN_I;
+			minL = (dataSize + 3)*(3*N + 6)*MIN_X;
+			//minL = dataSize * ( 2 * N + 3) * MIN_X;
 		}
         
 		double scale;
@@ -221,12 +223,12 @@ namespace glbarcode
 				
 			switch ( c )
 			{
-
+#if 0
 			case 'i':
 				/* Inter-character gap */
 				x1 += scale * MIN_I;
 				break;
-
+#endif
 			case 'N':
 				/* Narrow bar */
 				lwidth = scale*MIN_X;
@@ -259,7 +261,7 @@ namespace glbarcode
 
 		if ( showText() )
 		{
-			std::string starredText = "*" + displayText + "*";
+			std::string starredText = displayText;
 			addText( xQuiet + width/2, height + (hTextArea+0.7*textSize)/2, textSize, starredText );
 		}
 
